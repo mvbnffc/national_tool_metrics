@@ -9,7 +9,7 @@ The aim is to keep the process lightweight and repeatable:
 3. Use one notebook per analysis module to summarize inputs to administrative regions.
 4. Export clean CSV files with one row per sub-national region and one column per metric.
 
-The first test country is Kenya. The first hazard for the risk modules is flooding, but the folder structure is designed to allow additional hazards later.
+Country folders should use ISO3 codes. The first test country is `KEN`. The first hazard for the risk modules is flooding, but the folder structure is designed to allow additional hazards later.
 
 ## Repository Structure
 
@@ -17,13 +17,13 @@ The first test country is Kenya. The first hazard for the risk modules is floodi
 national_tool_metrics/
   data/
     boundaries/
-      kenya/
+      KEN/
         adm0/
         adm1/
         adm2/
 
     raw/
-      kenya/
+      KEN/
         context/
         socioeconomic/
           flooding/
@@ -37,7 +37,7 @@ national_tool_metrics/
   src/
 
   results/
-    kenya/
+    KEN/
       context/
       socioeconomic/
         flooding/
@@ -61,15 +61,15 @@ The current planned modules are:
 Risk modules are organized by hazard. For example:
 
 ```text
-data/raw/kenya/socioeconomic/flooding/
+data/raw/KEN/socioeconomic/flooding/
 ```
 
 Future hazards can be added using the same pattern:
 
 ```text
-data/raw/kenya/socioeconomic/tropical_cyclone/
-data/raw/kenya/infrastructure/tropical_cyclone/
-data/raw/kenya/service_disruption/tropical_cyclone/
+data/raw/KEN/socioeconomic/tropical_cyclone/
+data/raw/KEN/infrastructure/tropical_cyclone/
+data/raw/KEN/service_disruption/tropical_cyclone/
 ```
 
 ## Boundary Data
@@ -77,15 +77,15 @@ data/raw/kenya/service_disruption/tropical_cyclone/
 Country boundary layers should be stored under:
 
 ```text
-data/boundaries/<country>/
+data/boundaries/<ISO3>/
 ```
 
-For Kenya, the current folders are:
+For `KEN`, the current folders are:
 
 ```text
-data/boundaries/kenya/adm0/
-data/boundaries/kenya/adm1/
-data/boundaries/kenya/adm2/
+data/boundaries/KEN/adm0/
+data/boundaries/KEN/adm1/
+data/boundaries/KEN/adm2/
 ```
 
 Each boundary layer should include a stable administrative identifier that can be carried into the final metric CSVs.
@@ -134,7 +134,7 @@ These should be followed by the metric columns created by the notebook.
 Example output path:
 
 ```text
-results/kenya/socioeconomic/flooding/kenya_adm2_socioeconomic_flooding_metrics.csv
+results/KEN/socioeconomic/flooding/KEN_adm2_socioeconomic_flooding_metrics.csv
 ```
 
 For the `context` module, use `hazard = none` or omit the hazard column if the downstream tool does not need it.
@@ -160,8 +160,7 @@ This file should make it clear what each output column means and how it was calc
 1. Create the initial repository structure.
 2. Add this README and document the expected workflow.
 3. Add a minimal `.gitignore` and project environment file.
-4. Add the Kenya boundary data.
-5. Build the first Kenya context metrics notebook.
+4. Add the `KEN` boundary data.
+5. Build the first `KEN` context metrics notebook.
 6. Export and inspect the first context metrics CSV.
-7. Add the first Kenya flooding risk module once the basic pattern is working.
-
+7. Add the first `KEN` flooding risk module once the basic pattern is working.
